@@ -30,7 +30,6 @@ namespace Курсовик
         public int LifeMin = 20; // минимальное время жизни частицы
         public int LifeMax = 100; // максимальное время жизни частицы
         public int ParticlesPerTick = 1; // добавил новое поле
-        public bool F = false;
         public Color ColorFrom = Color.White; // начальный цвет частицы
         public Color ColorTo = Color.FromArgb(0, Color.Black); // конечный цвет частиц
 
@@ -82,7 +81,7 @@ namespace Курсовик
                 particles.Add(particle);
             }
         }
-        public int ParticlesCount = 500;
+        public int ParticlesCount = 0;
         public virtual void ResetParticle(Particle particle)
         {
             particle.Life = Particle.rand.Next(LifeMin, LifeMax);

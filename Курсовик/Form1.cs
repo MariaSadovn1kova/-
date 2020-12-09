@@ -9,7 +9,6 @@ namespace Курсовик
     {
         List<Emitter> emitters = new List<Emitter>();
         Emitter emitter; // добавим поле для эмиттера
-        public bool A;
 
         public Form1()
         {
@@ -92,9 +91,29 @@ namespace Курсовик
             }
         }
 
-        public void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            A = true;
+            if (checkBox1.Checked)
+            {
+                emitter.GravitationY = 0;
+            }
+            else
+            {
+                emitter.GravitationY = trackBar1.Value;
+                lblSpreading.Text = $"{tdSpreading.Value}°";
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                emitter.GravitationY = 0;
+            }
+            else
+            {
+                emitter.GravitationY = 1;
+            }
         }
     }
 }
