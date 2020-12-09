@@ -54,8 +54,9 @@ namespace Курсовик
             SolidBrush myBrush8 = new SolidBrush(ColorTranslator.FromHtml("#CD4A4A"));
             SolidBrush myBrush9 = new SolidBrush(ColorTranslator.FromHtml("#BC5D58"));
 
-            if (count <= 100)
+           if (count <= 100)
             {
+
                 g.FillEllipse(
                        myBrush,
                        X - Power / 2,
@@ -64,6 +65,7 @@ namespace Курсовик
                        Power
                     );
             }
+          
             if ((count <= 200)&&(count > 100))
             {
                 g.FillEllipse(
@@ -154,26 +156,17 @@ namespace Курсовик
                        Power
                     );
             }
-            if (count < 1001)
-            {
                 g.DrawString(
                Convert.ToString(count), // надпись, можно перенос строки вставлять (если вы Катя, то может не работать и надо использовать \r\n)
                new Font("Verdana", 10), // шрифт и его размер
                new SolidBrush(Color.White), // цвет шрифта
-               X - 15, // расположение в пространстве
+               X - 13, // расположение в пространстве
                Y - 10
            );
-            }
-            else
-            {
-                g.DrawString(
-                "1000", // надпись, можно перенос строки вставлять (если вы Катя, то может не работать и надо использовать \r\n)
-                new Font("Verdana", 10), // шрифт и его размер
-                new SolidBrush(Color.White), // цвет шрифта
-                X - 15, // расположение в пространстве
-                Y - 10
-                );
-            }
+            
         }
+
+
+
     }
 }

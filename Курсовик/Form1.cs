@@ -71,6 +71,7 @@ namespace Курсовик
                 {
                     // если гравитон то меняем силу
                     (p as GravityPoint).Power = tbCounter.Value;
+                    label6.Text = $"{tbCounter.Value}";
                 }
             }
         }
@@ -100,7 +101,7 @@ namespace Курсовик
             else
             {
                 emitter.GravitationY = trackBar1.Value;
-                lblSpreading.Text = $"{tdSpreading.Value}°";
+                label5.Text = $"{trackBar1.Value}";
             }
         }
 
@@ -115,5 +116,12 @@ namespace Курсовик
                 emitter.GravitationY = 1;
             }
         }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            emitter.RadiusMin = trackBar2.Value;
+            label8.Text = $"{trackBar2.Value}";
+        }
+
     }
 }
