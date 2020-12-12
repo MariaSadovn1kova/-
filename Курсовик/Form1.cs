@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Курсовик
 {
     public partial class Form1 : Form
     {
         List<Emitter> emitters = new List<Emitter>();
-        Emitter emitter; // добавим поле для эмиттера
-
+        Emitter emitter;
+        bool Launch = true;
         public Form1()
         {
             InitializeComponent();
             picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
 
 
-            this.emitter = new Emitter // создаю эмиттер и привязываю его к полю emitter
+            this.emitter = new Emitter 
             {
                 Direction = 0,
                 Spreading = 10,
@@ -28,49 +29,59 @@ namespace Курсовик
                 X = picDisplay.Width / 2,
                 Y = 30,
             };
-            emitters.Add(this.emitter); // все равно добавляю в список emitters, чтобы он рендерился и обновлялся
+            emitters.Add(this.emitter); 
         }
         private void timer_Tick1(object sender, EventArgs e)
         {
-            emitter.UpdateState(); // тут теперь обновляем эмиттер
-
             using (var g = Graphics.FromImage(picDisplay.Image))
             {
                 g.Clear(Color.Black);
-                emitter.Render(g); // а тут теперь рендерим через эмиттер
+                emitter.Render(g);
             }
-
             picDisplay.Invalidate();
+            foreach (var p in emitter.particles)
+            {
+                if (p.X > picDisplay.Width || p.Y > picDisplay.Height || p.X < 0 || p.Y < 0)
+                {
+                    p.Life = 0;
+                }
+            }
+            if (Launch == true)
+            {
+                emitter.UpdateState();
+            }
+            else
+            {
+
+            }
 
         }
 
         private void picDisplay_MouseMove(object sender, MouseEventArgs e)
         {
-            // а тут в эмиттер передаем положение мыфки
             emitter.MousePositionX = e.X;
             emitter.MousePositionY = e.Y;
         }
 
         private void tbDirection_Scroll(object sender, EventArgs e)
         {
-            emitter.Direction = tbDirection.Value; // направлению эмиттера присваиваем значение ползунка 
-            lblDirection.Text = $"{tbDirection.Value}°"; // добавил вывод значения
+            emitter.Direction = tbDirection.Value; 
+            lblDirection.Text = $"{tbDirection.Value}°"; 
         }
 
         private void tdSpreading_Scroll(object sender, EventArgs e)
         {
             emitter.Spreading = tdSpreading.Value;
-            lblSpreading.Text = $"{tdSpreading.Value}°"; // добавил вывод значения
+            lblSpreading.Text = $"{tdSpreading.Value}°"; 
         }
 
         private void tbCounter_Scroll(object sender, EventArgs e)
         {
             foreach (var p in emitter.impactPoints)
             {
-                if (p is GravityPoint) // так как impactPoints не обязательно содержит поле Power, надо проверить на тип 
+                if (p is CountPoint)  
                 {
-                    // если гравитон то меняем силу
-                    (p as GravityPoint).Power = tbCounter.Value;
+                    (p as CountPoint).Power = tbCounter.Value;
                     label6.Text = $"{tbCounter.Value}";
                 }
             }
@@ -80,15 +91,20 @@ namespace Курсовик
         {
             if (e.Button == MouseButtons.Left)
             {
-                emitter.impactPoints.Add(new GravityPoint
+                emitter.impactPoints.Add(new CountPoint
                 {
                     X = emitter.MousePositionX,
                     Y = emitter.MousePositionY,
+                    Power = tbCounter.Value,
                 });
+                emitter.UpdateState2();
             }
+           //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             if (e.Button == MouseButtons.Right)
             {
-                
+                    emitter.impactPoints = emitter.impactPoints
+                    .Where(x => !(x is CountPoint))
+                    .ToList();
             }
         }
 
@@ -123,5 +139,96 @@ namespace Курсовик
             label8.Text = $"{trackBar2.Value}";
         }
 
+        private void trackBar4_Scroll_1(object sender, EventArgs e)
+        {
+            emitter.RadiusMax = trackBar4.Value;
+            label11.Text = $"{trackBar4.Value}";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Launch = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Launch = false;
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            emitter.ColorFrom = Color.Blue;
+            emitter.ColorTo = Color.FromArgb(0, Color.Green);
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            emitter.ColorFrom = Color.Yellow;
+            emitter.ColorTo = Color.FromArgb(0, Color.Red);
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            emitter.ColorFrom = Color.Violet;
+            emitter.ColorTo = Color.FromArgb(0, Color.Pink);
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            emitter.ColorFrom = Color.Brown;
+            emitter.ColorTo = Color.FromArgb(0, Color.LightBlue);
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                emitter.impactPoints.Add(new AntiGravityPoint
+                {
+                    X = picDisplay.Width / 2,
+                    Y = picDisplay.Height / 2
+                });
+            }
+            else
+            {
+                emitter.impactPoints = emitter.impactPoints
+                .Where(x => !(x is AntiGravityPoint))
+                .ToList();
+            }
+        }
+
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            emitter.UpdateState();
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked)
+            {
+                emitter.impactPoints.Add(new GravityPoint
+                {
+                    X = picDisplay.Width / 2 + 100,
+                    Y = picDisplay.Height / 2,
+                });
+                emitter.impactPoints.Add(new GravityPoint
+                {
+                    X = picDisplay.Width / 2 - 100,
+                    Y = picDisplay.Height / 2,
+                });
+            }
+            else
+            {
+                emitter.impactPoints = emitter.impactPoints
+                .Where(x => !(x is GravityPoint))
+                .ToList();
+            }
+        }
+        private void trackBar5_Scroll_1(object sender, EventArgs e)
+        {
+            emitter.ParticlesPerTick = trackBar5.Value;
+
+        }
     }
 }
