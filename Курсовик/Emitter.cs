@@ -13,27 +13,25 @@ namespace Курсовик
     public class Emitter
     {
         public float GravitationX = 0;
-        public float GravitationY = 1; // пусть гравитация будет силой один пиксель за такт, нам хватит
+        public float GravitationY = 1; 
         public int MousePositionX = 0;
-        public int MousePositionY = 0;
-        // собственно список, пока пустой
+        public int MousePositionY = 0; 
         public List<Particle> particles = new List<Particle>();
-        public List<IImpactPoint> impactPoints = new List<IImpactPoint>(); // тут буду хранится точки притяжения
-        public int X; // координата X центра эмиттера, будем ее использовать вместо MousePositionX
-        public int Y; // соответствующая координата Y 
-        public int Direction = 0; // вектор направления в градусах куда сыпет эмиттер
-        public int Spreading = 360; // разброс частиц относительно Direction
-        public int SpeedMin = 1; // начальная минимальная скорость движения частицы
-        public int SpeedMax = 10; // начальная максимальная скорость движения частицы
-        public int RadiusMin = 2; // минимальный радиус частицы
-        public int RadiusMax = 10; // максимальный радиус частицы
-        public int LifeMin = 20; // минимальное время жизни частицы
-        public int LifeMax = 100; // максимальное время жизни частицы
-        public int ParticlesPerTick = 1; // добавил новое поле
-        public Color ColorFrom = Color.White; // начальный цвет частицы
-        public Color ColorTo = Color.FromArgb(0, Color.Black); // конечный цвет частиц
+        public List<IImpactPoint> impactPoints = new List<IImpactPoint>();
+        public int X;
+        public int Y; 
+        public int Direction = 0; 
+        public int Spreading = 360; 
+        public int SpeedMin = 1; 
+        public int SpeedMax = 10; 
+        public int RadiusMin = 2; 
+        public int RadiusMax = 10; 
+        public int LifeMin = 20; 
+        public int LifeMax = 100; 
+        public int ParticlesPerTick = 1; 
+        public Color ColorFrom = Color.White; 
+        public Color ColorTo = Color.FromArgb(0, Color.Black); 
 
-        /* добавил метод */
         public virtual Particle CreateParticle()
         {
             var particle = new ParticleColorful();
@@ -47,6 +45,7 @@ namespace Курсовик
             int particlesToCreate = ParticlesPerTick;
             foreach (var particle in particles)
             {  
+
                 if (particle.Life <= 0)
                 {
                     
@@ -83,7 +82,8 @@ namespace Курсовик
             }
         }
 
-        public void UpdateState2()
+        // Дополнительный апдейт для точек
+        public void UpdateStateForPoints()
         {
             foreach (var particle in particles)
             {
@@ -127,21 +127,5 @@ namespace Курсовик
             }
         }
 
-    }
-    public class TopEmitter : Emitter
-    {
-        public int Width; 
-
-        public override void ResetParticle(Particle particle)
-        {
-            base.ResetParticle(particle); 
-
-            
-            particle.X = Particle.rand.Next(Width); 
-            particle.Y = 0;  
-
-            particle.SpeedY = 1; 
-            particle.SpeedX = Particle.rand.Next(-2, 2); 
-        }
     }
 }

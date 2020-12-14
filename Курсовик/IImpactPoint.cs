@@ -10,6 +10,7 @@ namespace Курсовик
         public int count = 0; //Количество частиц в точке
         public int countMin = 0;
         public int countMax = 0;
+        public int Power = 50;
 
         public abstract void ImpactParticle(Particle particle);
 
@@ -41,26 +42,16 @@ namespace Курсовик
                     count = 0;
                 }
             }
-            if ((r + particle.Radius < Power / 2) && (particle.Radius < 10))
+            if ((r + particle.Radius < Power / 2) && (particle.Radius < 7))
             {
                 countMin++;
             }
-            if ((r + particle.Radius < Power / 2) && (particle.Radius > 10))
+            if ((r + particle.Radius < Power / 2) && (particle.Radius > 7))
             {
                 countMax++;
             }
+        }
 
-        }
-        public void DeletePoint(Particle particle)
-        {
-            float gX = X - particle.X;
-            float gY = Y - particle.Y;
-            float r = (float)Math.Sqrt(gX * gX + gY * gY);
-            if (r + particle.Radius < Power / 2)
-            {
-                
-            }
-        }
         public override void Render(Graphics g)
         {
             int k = 100;

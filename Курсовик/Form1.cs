@@ -15,21 +15,7 @@ namespace Курсовик
         {
             InitializeComponent();
             picDisplay.Image = new Bitmap(picDisplay.Width, picDisplay.Height);
-
-
-            this.emitter = new Emitter 
-            {
-                Direction = 0,
-                Spreading = 10,
-                SpeedMin = 10,
-                SpeedMax = 10,
-                ColorFrom = Color.Yellow,
-                ColorTo = Color.FromArgb(0, Color.Red),
-                ParticlesPerTick = 10,
-                X = picDisplay.Width / 2,
-                Y = 30,
-            };
-            emitters.Add(this.emitter); 
+            radioButton2.Checked = true;
         }
         private void timer_Tick1(object sender, EventArgs e)
         {
@@ -97,14 +83,25 @@ namespace Курсовик
                     Y = emitter.MousePositionY,
                     Power = tbCounter.Value,
                 });
-                emitter.UpdateState2();
+                emitter.UpdateStateForPoints();
             }
-           //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             if (e.Button == MouseButtons.Right)
             {
-                    emitter.impactPoints = emitter.impactPoints
-                    .Where(x => !(x is CountPoint))
-                    .ToList();
+                foreach (var p in emitter.impactPoints)
+                {
+                    if (p is CountPoint)
+                    {
+                        var a = p as CountPoint;
+                        var x = a.X - e.X;
+                        var y = a.Y - e.Y;
+                        double r = Math.Sqrt(x * x + y * y);
+                        if (r <= a.Power / 2)
+                        {
+                            emitter.impactPoints.Remove(p as CountPoint);
+                            break;
+                        }
+                    }
+                }
             }
         }
 
@@ -135,7 +132,7 @@ namespace Курсовик
 
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
-            emitter.RadiusMin = trackBar2.Value;
+            emitter.SpeedMax = trackBar2.Value;
             label8.Text = $"{trackBar2.Value}";
         }
 
@@ -157,26 +154,62 @@ namespace Курсовик
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            emitter.ColorFrom = Color.Blue;
-            emitter.ColorTo = Color.FromArgb(0, Color.Green);
+            if (radioButton1.Checked)
+            {
+                this.emitter = new Emitter
+                {
+                    Direction = 180,
+                    Spreading = tdSpreading.Value,
+                    GravitationY = trackBar1.Value,
+                    SpeedMin = 10,
+                    SpeedMax = trackBar2.Value,
+                    ParticlesPerTick = trackBar5.Value,
+                    RadiusMax = trackBar4.Value,
+                    ColorFrom = Color.Blue,
+                    ColorTo = Color.FromArgb(0, Color.Green),
+                    X = picDisplay.Width - 30,
+                    Y = 30,
+                };
+                emitters.Add(this.emitter);
+            }
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            emitter.ColorFrom = Color.Yellow;
-            emitter.ColorTo = Color.FromArgb(0, Color.Red);
+            this.emitter = new Emitter
+            {
+                Direction = 0,
+                Spreading = tdSpreading.Value,
+                GravitationY = trackBar1.Value,
+                SpeedMin = 10,
+                SpeedMax = trackBar2.Value,
+                ParticlesPerTick = trackBar5.Value,
+                RadiusMax = trackBar4.Value,
+                ColorFrom = Color.Yellow,
+                ColorTo = Color.FromArgb(0, Color.Red),
+                X = picDisplay.Width / 2,
+                Y = 30,
+            };
+            emitters.Add(this.emitter);
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            emitter.ColorFrom = Color.Violet;
-            emitter.ColorTo = Color.FromArgb(0, Color.Pink);
-        }
-
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-            emitter.ColorFrom = Color.Brown;
-            emitter.ColorTo = Color.FromArgb(0, Color.LightBlue);
+            this.emitter = new Emitter
+            {
+                Direction = 0,
+                Spreading = tdSpreading.Value,
+                GravitationY = trackBar1.Value,
+                SpeedMin = 10,
+                SpeedMax = trackBar2.Value,
+                ParticlesPerTick = trackBar5.Value,
+                RadiusMax = trackBar4.Value,
+                ColorFrom = Color.Violet,
+                ColorTo = Color.FromArgb(0, Color.Pink),
+                X = 30,
+                Y = 30,
+            };
+            emitters.Add(this.emitter);
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -228,7 +261,7 @@ namespace Курсовик
         private void trackBar5_Scroll_1(object sender, EventArgs e)
         {
             emitter.ParticlesPerTick = trackBar5.Value;
-
+            label13.Text = $"{trackBar5.Value}";
         }
     }
 }

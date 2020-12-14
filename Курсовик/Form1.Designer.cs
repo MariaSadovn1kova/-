@@ -54,7 +54,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.trackBar4 = new System.Windows.Forms.TrackBar();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
@@ -67,6 +66,7 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.trackBar5 = new System.Windows.Forms.TrackBar();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tdSpreading)).BeginInit();
@@ -121,7 +121,7 @@
             // tdSpreading
             // 
             this.tdSpreading.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(206)))), ((int)(((byte)(151)))));
-            this.tdSpreading.Location = new System.Drawing.Point(0, 178);
+            this.tdSpreading.Location = new System.Drawing.Point(2, 178);
             this.tdSpreading.Maximum = 359;
             this.tdSpreading.Name = "tdSpreading";
             this.tdSpreading.Size = new System.Drawing.Size(194, 45);
@@ -300,19 +300,20 @@
             this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(206)))), ((int)(((byte)(151)))));
             this.label8.Location = new System.Drawing.Point(183, 259);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(13, 13);
+            this.label8.Size = new System.Drawing.Size(19, 13);
             this.label8.TabIndex = 19;
-            this.label8.Text = "0";
+            this.label8.Text = "10";
             // 
             // trackBar2
             // 
             this.trackBar2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(206)))), ((int)(((byte)(151)))));
             this.trackBar2.Location = new System.Drawing.Point(2, 266);
-            this.trackBar2.Minimum = 1;
+            this.trackBar2.Maximum = 20;
+            this.trackBar2.Minimum = 10;
             this.trackBar2.Name = "trackBar2";
             this.trackBar2.Size = new System.Drawing.Size(194, 45);
             this.trackBar2.TabIndex = 19;
-            this.trackBar2.Value = 1;
+            this.trackBar2.Value = 10;
             this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
             // label7
@@ -323,7 +324,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(190, 49);
             this.label7.TabIndex = 19;
-            this.label7.Text = "Минимальный радиус частицы:";
+            this.label7.Text = "Максимальная скорость частицы:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // trackBar4
@@ -341,7 +342,6 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(206)))), ((int)(((byte)(151)))));
-            this.panel3.Controls.Add(this.radioButton4);
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.radioButton3);
             this.panel3.Controls.Add(this.radioButton2);
@@ -351,18 +351,6 @@
             this.panel3.Size = new System.Drawing.Size(217, 235);
             this.panel3.TabIndex = 18;
             // 
-            // radioButton4
-            // 
-            this.radioButton4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton4.Location = new System.Drawing.Point(16, 163);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(175, 48);
-            this.radioButton4.TabIndex = 25;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Коричневый и голубой";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -370,14 +358,14 @@
             this.label9.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label9.Location = new System.Drawing.Point(12, 15);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(185, 21);
+            this.label9.Size = new System.Drawing.Size(129, 21);
             this.label9.TabIndex = 22;
-            this.label9.Text = "Добавить цвет в поток:";
+            this.label9.Text = "Выбрать поток:";
             // 
             // radioButton3
             // 
             this.radioButton3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton3.Location = new System.Drawing.Point(16, 109);
+            this.radioButton3.Location = new System.Drawing.Point(16, 141);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(175, 48);
             this.radioButton3.TabIndex = 24;
@@ -390,7 +378,7 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton2.Location = new System.Drawing.Point(16, 78);
+            this.radioButton2.Location = new System.Drawing.Point(16, 77);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(175, 25);
             this.radioButton2.TabIndex = 23;
@@ -403,7 +391,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton1.Location = new System.Drawing.Point(16, 41);
+            this.radioButton1.Location = new System.Drawing.Point(15, 110);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(166, 25);
             this.radioButton1.TabIndex = 22;
@@ -415,6 +403,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(206)))), ((int)(((byte)(151)))));
+            this.panel4.Controls.Add(this.label13);
             this.panel4.Controls.Add(this.trackBar5);
             this.panel4.Controls.Add(this.label12);
             this.panel4.Controls.Add(this.checkBox3);
@@ -499,12 +488,22 @@
             // 
             this.trackBar5.Location = new System.Drawing.Point(16, 198);
             this.trackBar5.Maximum = 50;
-            this.trackBar5.Minimum = 1;
+            this.trackBar5.Minimum = 10;
             this.trackBar5.Name = "trackBar5";
             this.trackBar5.Size = new System.Drawing.Size(181, 45);
             this.trackBar5.TabIndex = 24;
-            this.trackBar5.Value = 1;
+            this.trackBar5.Value = 10;
             this.trackBar5.Scroll += new System.EventHandler(this.trackBar5_Scroll_1);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(206)))), ((int)(((byte)(151)))));
+            this.label13.Location = new System.Drawing.Point(184, 193);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(19, 13);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "10";
             // 
             // Form1
             // 
@@ -589,12 +588,12 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TrackBar trackBar5;
+        private System.Windows.Forms.Label label13;
     }
 }
 
