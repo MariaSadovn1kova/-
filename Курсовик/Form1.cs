@@ -87,17 +87,17 @@ namespace Курсовик
             }
             if (e.Button == MouseButtons.Right)
             {
-                foreach (var p in emitter.impactPoints)
+                foreach (var point in emitter.impactPoints)
                 {
-                    if (p is CountPoint)
+                    if (point is CountPoint)
                     {
-                        var a = p as CountPoint;
+                        var a = point as CountPoint;
                         var x = a.X - e.X;
                         var y = a.Y - e.Y;
                         double r = Math.Sqrt(x * x + y * y);
                         if (r <= a.Power / 2)
                         {
-                            emitter.impactPoints.Remove(p as CountPoint);
+                            emitter.impactPoints.Remove(point as CountPoint);
                             break;
                         }
                     }
@@ -156,6 +156,8 @@ namespace Курсовик
         {
             if (radioButton1.Checked)
             {
+                checkBox2.Checked = false;
+                checkBox3.Checked = false;
                 this.emitter = new Emitter
                 {
                     Direction = 180,
@@ -176,6 +178,8 @@ namespace Курсовик
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
+            checkBox2.Checked = false;
+            checkBox3.Checked = false;
             this.emitter = new Emitter
             {
                 Direction = 0,
@@ -195,6 +199,8 @@ namespace Курсовик
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
+            checkBox2.Checked = false;
+            checkBox3.Checked = false;
             this.emitter = new Emitter
             {
                 Direction = 0,

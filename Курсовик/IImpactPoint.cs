@@ -5,9 +5,9 @@ namespace Курсовик
 {
    public abstract class IImpactPoint
    {
-        public float X; // ну точка же, вот и две координаты
+        public float X; 
         public float Y;
-        public int count = 0; //Количество частиц в точке
+        public int count = 0; 
         public int countMin = 0;
         public int countMax = 0;
         public int Power = 50;
@@ -25,6 +25,7 @@ namespace Курсовик
                 );
         }
     }
+    // Счетчики
     public class CountPoint : IImpactPoint
     {
         public int Power = 50; 
@@ -96,33 +97,31 @@ namespace Курсовик
     }
     public class AntiGravityPoint : IImpactPoint
     {
-        public int Power = 100; // сила отторжения
-
-        // а сюда по сути скопировали с минимальными правками то что было в UpdateState
+        public int Power = 100;
         public override void ImpactParticle(Particle particle)
         {
             float gX = X - particle.X;
             float gY = Y - particle.Y;
             float r2 = (float)Math.Max(100, gX * gX + gY * gY);
 
-            particle.SpeedX -= gX * Power / r2; // тут минусики вместо плюсов
-            particle.SpeedY -= gY * Power / r2; // и тут
+            particle.SpeedX -= gX * Power / r2; 
+            particle.SpeedY -= gY * Power / r2; 
 
         }
     }
     public class GravityPoint : IImpactPoint
     {
-        public int Power = 100; // сила отторжения
+        public int Power = 100;
 
-        // а сюда по сути скопировали с минимальными правками то что было в UpdateState
+       
         public override void ImpactParticle(Particle particle)
         {
             float gX = X - particle.X;
             float gY = Y - particle.Y;
             float r2 = (float)Math.Max(100, gX * gX + gY * gY);
 
-            particle.SpeedX += gX * Power / r2; // тут минусики вместо плюсов
-            particle.SpeedY += gY * Power / r2; // и тут
+            particle.SpeedX += gX * Power / r2; 
+            particle.SpeedY += gY * Power / r2; 
 
         }
     }

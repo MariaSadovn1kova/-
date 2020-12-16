@@ -59,14 +59,14 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.trackBar5 = new System.Windows.Forms.TrackBar();
+            this.label12 = new System.Windows.Forms.Label();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.trackBar5 = new System.Windows.Forms.TrackBar();
-            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tdSpreading)).BeginInit();
@@ -365,7 +365,7 @@
             // radioButton3
             // 
             this.radioButton3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton3.Location = new System.Drawing.Point(16, 141);
+            this.radioButton3.Location = new System.Drawing.Point(16, 133);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(175, 48);
             this.radioButton3.TabIndex = 24;
@@ -378,7 +378,7 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton2.Location = new System.Drawing.Point(16, 77);
+            this.radioButton2.Location = new System.Drawing.Point(16, 69);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(175, 25);
             this.radioButton2.TabIndex = 23;
@@ -391,7 +391,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton1.Location = new System.Drawing.Point(15, 110);
+            this.radioButton1.Location = new System.Drawing.Point(15, 102);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(166, 25);
             this.radioButton1.TabIndex = 22;
@@ -412,6 +412,50 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(217, 280);
             this.panel4.TabIndex = 19;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(206)))), ((int)(((byte)(151)))));
+            this.label13.Location = new System.Drawing.Point(184, 193);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(19, 13);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "10";
+            // 
+            // trackBar5
+            // 
+            this.trackBar5.Location = new System.Drawing.Point(16, 198);
+            this.trackBar5.Maximum = 50;
+            this.trackBar5.Minimum = 10;
+            this.trackBar5.Name = "trackBar5";
+            this.trackBar5.Size = new System.Drawing.Size(181, 45);
+            this.trackBar5.TabIndex = 24;
+            this.trackBar5.Value = 10;
+            this.trackBar5.Scroll += new System.EventHandler(this.trackBar5_Scroll_1);
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(206)))), ((int)(((byte)(151)))));
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.Location = new System.Drawing.Point(39, 146);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(139, 49);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Интенсивность потока:";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(206)))), ((int)(((byte)(151)))));
+            this.checkBox3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox3.Location = new System.Drawing.Point(16, 73);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(185, 56);
+            this.checkBox3.TabIndex = 23;
+            this.checkBox3.Text = "Добавить гравитон";
+            this.checkBox3.UseVisualStyleBackColor = false;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // checkBox2
             // 
@@ -460,50 +504,6 @@
             this.button3.Text = "Шаг";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(206)))), ((int)(((byte)(151)))));
-            this.checkBox3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox3.Location = new System.Drawing.Point(16, 73);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(185, 56);
-            this.checkBox3.TabIndex = 23;
-            this.checkBox3.Text = "Добавить гравитон";
-            this.checkBox3.UseVisualStyleBackColor = false;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
-            // 
-            // label12
-            // 
-            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(206)))), ((int)(((byte)(151)))));
-            this.label12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(39, 146);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(139, 49);
-            this.label12.TabIndex = 23;
-            this.label12.Text = "Интенсивность потока:";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // trackBar5
-            // 
-            this.trackBar5.Location = new System.Drawing.Point(16, 198);
-            this.trackBar5.Maximum = 50;
-            this.trackBar5.Minimum = 10;
-            this.trackBar5.Name = "trackBar5";
-            this.trackBar5.Size = new System.Drawing.Size(181, 45);
-            this.trackBar5.TabIndex = 24;
-            this.trackBar5.Value = 10;
-            this.trackBar5.Scroll += new System.EventHandler(this.trackBar5_Scroll_1);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(206)))), ((int)(((byte)(151)))));
-            this.label13.Location = new System.Drawing.Point(184, 193);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(19, 13);
-            this.label13.TabIndex = 22;
-            this.label13.Text = "10";
             // 
             // Form1
             // 

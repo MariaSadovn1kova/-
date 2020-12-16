@@ -9,13 +9,12 @@ namespace Курсовик
 {
    public class Particle
     {
-        public int Radius; // радуис частицы
-        public float X; // X координата положения частицы в пространстве
-        public float Y; // Y координата положения частицы в пространстве
-        public float SpeedX; // скорость перемещения по оси X
-        public float SpeedY; // скорость перемещения по оси Y
-        public float Life; // запас здоровья частицы
-        // добавили генератор случайных чисел
+        public int Radius; 
+        public float X; 
+        public float Y; 
+        public float SpeedX;
+        public float SpeedY;
+        public float Life; 
         public static Random rand = new Random();
 
         
